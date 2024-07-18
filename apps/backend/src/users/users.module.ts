@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
@@ -9,7 +9,7 @@ import { AuthModule } from '../auth/auth.module';
 
 //! RESOVLVE CIRCULAR DEPENDENCY BETWEEN USERS AND AUTH MODULES
 @Module({
-  imports: [TypeOrmModule.forFeature([User, ReadingHistory, FavoriteBook, UserPreference]), AuthModule],
+  imports: [TypeOrmModule.forFeature([User, ReadingHistory, FavoriteBook, UserPreference]), forwardRef(() => AuthModule)],
   providers: [UsersService],
   exports: [UsersService],
 })
