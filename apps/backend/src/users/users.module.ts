@@ -7,7 +7,6 @@ import { FavoriteBook } from './entities/favorite-book.entity';
 import { UserPreference } from './entities/user-preference.entity';
 import { AuthModule } from '../auth/auth.module';
 
-//! RESOVLVE CIRCULAR DEPENDENCY BETWEEN USERS AND AUTH MODULES
 @Module({
   imports: [TypeOrmModule.forFeature([User, ReadingHistory, FavoriteBook, UserPreference]), forwardRef(() => AuthModule)],
   providers: [UsersService],

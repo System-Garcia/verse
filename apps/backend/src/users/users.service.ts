@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { FavoriteBook } from './entities/favorite-book.entity';
 import { ReadingHistory } from './entities/reading-history.entity';
@@ -6,11 +6,7 @@ import { UserPreference } from './entities/user-preference.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
-import * as bcrypt from 'bcrypt';
 import { BcryptPasswordHasherService } from '../auth/services/bcrypt-password-hasher.service';
-
-// This should be a real class/interface representing a user entity
-export type User1 = any;
 
 @Injectable()
 export class UsersService {
@@ -27,29 +23,30 @@ export class UsersService {
     private bcryptPasswordHasherService: BcryptPasswordHasherService,
   ){}
 
-  private readonly users = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
-
   async create(createUserDto: CreateUserDto): Promise<User> {
+
+    const existingUser = await this.userRepository.findOne({
+      where: { email: createUserDto.email }
+    });
+
+    if (existingUser) {
+      throw new ConflictException('User already exists');
+    }
+
     const user = this.userRepository.create(createUserDto);
 
     user.password = await this.bcryptPasswordHasherService.hash(user.password);
     return this.userRepository.save(user);
   };
 
-  async findOne(name: string): Promise<User | null> {
+  async findOne(email: string): Promise<User | null> {
+
+    if (!email) {
+      return null;
+    }
+
     return await this.userRepository.findOne({
-      where: { name }
+      where: { email }
     });
   }
 
