@@ -32,6 +32,25 @@ To get started with this monorepo, follow these steps:
 
 3. Make sure you have Docker installed and running on your machine for database support.
 
+4. For each application, copy the `.env.template` file to `.env` and fill in the necessary environment variables:
+
+    For the frontend (Next.js) application:
+    ```bash
+    cp apps/frontend/.env.template apps/frontend/.env
+    ```
+
+    For the backend (NestJS) application:
+    ```bash
+    cp apps/backend/.env.template apps/backend/.env
+    ```
+
+5. Start the Docker containers for the database:
+    ```bash
+    npm run start:docker
+    ```
+
+Now you are ready to run the projects.
+
 ## Project Structure
 
 This repository contains the following projects:
