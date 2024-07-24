@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import { FavoriteBook } from './favorite-book.entity';
 import { ReadingHistory } from './reading-history.entity';
 import { UserPreference } from './user-preference.entity';
+import { UserRole } from './user-role.entity';
 
 @Entity('users')
 export class User {
@@ -34,4 +35,7 @@ export class User {
 
   @OneToMany(() => UserPreference, (userPreference) => userPreference.user)
   userPreferences: UserPreference[];
+
+  @OneToMany(() => UserRole, userRole => userRole.user)
+  userRoles: UserRole[];
 }

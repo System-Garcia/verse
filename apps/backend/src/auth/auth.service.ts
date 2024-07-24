@@ -3,7 +3,7 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import { BcryptPasswordHasherService } from './services/bcrypt-password-hasher.service';
-import { UserResponse } from './interfaces/user-response.interface';
+import { UserResponseDto } from '../users/dto/user-response.dto';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +17,7 @@ export class AuthService {
         email: string,
         pass: string,
       ): Promise<{ access_token: string }> {
-        const user = await this.usersService.findOne(email);
+        const user = await this.usersService.findByEmail(email);
         if (!user) {
           throw new UnauthorizedException();
         }
@@ -32,7 +32,7 @@ export class AuthService {
         };
       }
 
-      async register(createUserDto: CreateUserDto): Promise<UserResponse> {
+      async register(createUserDto: CreateUserDto): Promise<UserResponseDto> {
         const {password, ...user } = await this.usersService.create(createUserDto);
         return user;
       }
