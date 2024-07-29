@@ -10,30 +10,6 @@
     margin-bottom: 2.4rem;
 }
 
-
-.login-form__input {
-    width: 100%;
-    border: 0.5px solid #8E8E93; 
-    border-radius: 0.5rem;
-    background: var(#FFF, #FFF);
-    box-shadow: 0px 1px 10px 5px rgba(0, 0, 0, 0.04);
-    height: 5.8rem;
-    padding-left: 3rem;
-    font-size: 1.6rem;
-    color: rgba(60, 60, 67, 0.50); 
-}
-
-.login-form__input:focus {
-    outline: none;
-    border: 0.5px solid #A259FF;
-}
-
-.login-form__email {
-    display: flex;
-    position: relative;
-    align-items: center;
-}
-
 .login-form__email-icon {
     position: absolute;
     left: 1.6rem;
@@ -41,12 +17,6 @@
 
 .login-form-input__container--password {
     margin-bottom: 0;
-}
-
-.login-form__password {
-    display: flex;
-    position: relative;
-    align-items: center;
 }
 
 .login-form__password-icon {
