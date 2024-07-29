@@ -1,2 +1,192 @@
-.page {
-}
+.welcome__outerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #9b51e0;
+  }
+  
+  .welcome__innerContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+  
+  .welcome__backcover, .welcome__cover {
+    flex: 1;
+    background-color: #9b51e0;
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .welcome__backcover {
+    display: none;
+  }
+  
+  .welcome__spine {
+    width: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .welcome__logo_spine {
+    display: none;
+  }
+  
+  .welcome__logo_cover {
+    width: 80%;
+    height: auto;
+  }
+  
+  .welcome__title {
+    margin: 1rem 0;
+    font-size: 2.4rem;
+  }
+  
+  .welcome__subtitle {
+    margin: 0 0 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .welcome__description {
+    margin: 0 0 2rem;
+    font-size: 1.4rem;
+  }
+  
+  .welcome__benefits {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .welcome__benefit {
+    margin-bottom: 1rem;
+  }
+  
+  .welcome__button {
+    display: block;
+    width: 80%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .welcome__button--create {
+    background-color: #fff;
+    color: #9b51e0;
+  }
+  
+  .welcome__button--guest {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+  }
+  
+  @media (min-width: 768px) {
+    .welcome__innerContainer {
+      flex-direction: row;
+    }
+  
+    .welcome__backcover {
+      display: flex;
+      flex: 30%;
+      padding: 3rem;
+      font-size: 1.6rem;
+    }
+  
+    .welcome__cover {
+      flex: 45%;
+      padding: 3rem;
+    }
+  
+    .welcome__spine {
+      width: 20%;
+    }
+  
+    .welcome__logo_spine {
+      display: block;
+      width: 80%;
+      height: auto;
+    }
+  
+    .welcome__logo_cover {
+      display: none;
+    }
+  
+    .welcome__title {
+      font-size: 3.2rem;
+    }
+  
+    .welcome__subtitle {
+      font-size: 2.4rem;
+    }
+  
+    .welcome__description {
+      font-size: 1.8rem;
+    }
+  
+    .welcome__button {
+      font-size: 1.6rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .welcome__innerContainer {
+      flex-direction: row;
+    }
+  
+    .welcome__backcover {
+      display: flex;
+      flex: 30%;
+      padding: 4rem;
+      font-size: 1.8rem;
+    }
+  
+    .welcome__cover {
+      flex: 50%;
+      padding: 4rem;
+    }
+  
+    .welcome__spine {
+      width: 20%;
+    }
+  
+    .welcome__logo_spine {
+      display: block;
+      width: 80%;
+      height: auto;
+    }
+  
+    .welcome__logo_cover {
+      display: none;
+    }
+  
+    .welcome__title {
+      font-size: 4rem;
+    }
+  
+    .welcome__subtitle {
+      font-size: 2.8rem;
+    }
+  
+    .welcome__description {
+      font-size: 2rem;
+    }
+  
+    .welcome__button {
+      font-size: 1.8rem;
+    }
+  }

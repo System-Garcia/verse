@@ -194,4 +194,3 @@ It will show tasks that you can run with Nx.
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
-
