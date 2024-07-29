@@ -1,0 +1,97 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form-input__container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-bottom: 2.4rem;
+}
+
+
+.login-form__input {
+    width: 100%;
+    border: 0.5px solid #8E8E93; 
+    border-radius: 0.5rem;
+    background: var(#FFF, #FFF);
+    box-shadow: 0px 1px 10px 5px rgba(0, 0, 0, 0.04);
+    height: 5.8rem;
+    padding-left: 3rem;
+    font-size: 1.6rem;
+    color: rgba(60, 60, 67, 0.50); 
+}
+
+.login-form__input:focus {
+    outline: none;
+    border: 0.5px solid #A259FF;
+}
+
+.login-form__email {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.login-form__email-icon {
+    position: absolute;
+    left: 1.6rem;
+}
+
+.login-form-input__container--password {
+    margin-bottom: 0;
+}
+
+.login-form__password {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.login-form__password-icon {
+    position: absolute;
+    right: 1.6rem;
+    max-width: 1.9rem;
+    cursor: pointer;
+}
+
+.login-form__button {
+    background: #A259FF;
+    height: 5rem;
+    border: none;
+    border-radius: 1rem;
+    color: #FFF;
+    font-size: 1.8rem;
+    margin-top: 5.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-form__button:hover {
+    background: #8B4DE8;
+}
+
+.login-form__button:active {
+    background: #6C2BD9;
+}
+
+.login-form__button:disabled {
+    background: #D1D1D6;
+}
+
+.login-form__button:disabled:hover {
+    background: #D1D1D6;
+}
+
+.login-form__register {
+    text-align: center;
+    margin-top: 2.7rem;
+    font-size: 1.4rem;
+    color: #8E8E93;
+}
+
+.login-form__register-link {
+    font-weight: 700;
+    color: #8E8E93;
+}
