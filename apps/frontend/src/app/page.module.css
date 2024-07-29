@@ -4,7 +4,7 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background-color: #9b51e0;
+    background-color: #A259FF;
   }
   
   .welcome__innerContainer {
@@ -17,7 +17,7 @@
   
   .welcome__backcover, .welcome__cover {
     flex: 1;
-    background-color: #9b51e0;
+    background-color: #A259FF;
     color: white;
     padding: 2rem;
     display: flex;
@@ -36,6 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
   
   .welcome__logo_spine {
@@ -45,16 +46,25 @@
   .welcome__logo_cover {
     width: 80%;
     height: auto;
+    margin: 0 auto;
+  }
+  
+  .welcome__coverContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
   
   .welcome__title {
     margin: 1rem 0;
-    font-size: 2.4rem;
+    font-size: 3rem;
   }
   
   .welcome__subtitle {
     margin: 0 0 2rem;
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   
   .welcome__description {
@@ -73,12 +83,12 @@
   
   .welcome__button {
     display: block;
-    width: 80%;
+    width: 100%;
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem auto;
     border: none;
-    border-radius: 4px;
-    font-size: 1.4rem;
+    border-radius: 1rem;
+    font-size: 1.6rem;
     cursor: pointer;
     text-decoration: none;
     text-align: center;
@@ -105,15 +115,26 @@
       flex: 30%;
       padding: 3rem;
       font-size: 1.6rem;
-    }
-  
-    .welcome__cover {
-      flex: 45%;
-      padding: 3rem;
+      transition: transform 0.5s ease-in-out;
     }
   
     .welcome__spine {
       width: 20%;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: width 0.5s ease-in-out;
+    }
+  
+    .welcome__spine:hover ~ .welcome__backcover {
+      transform: translateX(-100%);
+    }
+  
+    .welcome__cover {
+      flex: 50%;
+      padding: 3rem;
     }
   
     .welcome__logo_spine {
@@ -127,7 +148,7 @@
     }
   
     .welcome__title {
-      font-size: 3.2rem;
+      font-size: 4rem;
     }
   
     .welcome__subtitle {
@@ -139,7 +160,7 @@
     }
   
     .welcome__button {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
     }
   }
   
@@ -175,11 +196,11 @@
     }
   
     .welcome__title {
-      font-size: 4rem;
+      font-size: 5rem;
     }
   
     .welcome__subtitle {
-      font-size: 2.8rem;
+      font-size: 3rem;
     }
   
     .welcome__description {
@@ -187,6 +208,10 @@
     }
   
     .welcome__button {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
+  }
+  
+  .spine-clicked .welcome__backcover {
+    transform: translateX(-100%);
   }

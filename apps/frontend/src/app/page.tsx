@@ -20,15 +20,17 @@ const WelcomePage = () => {
           <Image src="/images/logo-white.svg" alt="Logo" width={50} height={50} className={styles['welcome__logo_spine']} />
         </div>
         <div className={styles['welcome__cover']}>
-          <Image src="/images/logo-white.svg" alt="Logo" width={100} height={100} className={styles['welcome__logo_cover']} />
-          <h1 className={styles['welcome__title']}>Welcome to VERSE</h1>
-          <p className={styles['welcome__subtitle']}>Read without limits</p>
-          <Link href="/auth/register" className={`${styles['welcome__button']} ${styles['welcome__button--create']}`}>
-            Create Account
-          </Link>
-          <Link href="/auth/login" className={`${styles['welcome__button']} ${styles['welcome__button--guest']}`}>
-            Log In as Guest
-          </Link>
+          <div className={styles['welcome__coverContent']}>
+            <Image src="/images/logo-white.svg" alt="Logo" width={100} height={100} className={styles['welcome__logo_cover']} />
+            <h1 className={styles['welcome__title']}>Welcome to VERSE</h1>
+            <p className={styles['welcome__subtitle']}>Read without limits</p>
+            <Link href="/auth/register" className={`${styles['welcome__button']} ${styles['welcome__button--create']}`}>
+              Create Account
+            </Link>
+            <Link href="/auth/login" className={`${styles['welcome__button']} ${styles['welcome__button--guest']}`}>
+              Log In as Guest
+            </Link>
+          </div>
         </div>
       </div>
     </div>
