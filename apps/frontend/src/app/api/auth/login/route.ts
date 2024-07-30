@@ -42,6 +42,7 @@ export async function POST(request: Request): Promise<Response> {
         name: 'authToken',
         value: authToken,
         httpOnly: true,
+        sameSite: 'strict',
         path: '/',
     });
 

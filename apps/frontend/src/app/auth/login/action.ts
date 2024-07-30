@@ -39,6 +39,7 @@ export async function login(email: string, password: string): Promise<LoginRespo
         name: 'authToken',
         value: authToken,
         httpOnly: true,
+        sameSite: 'strict',
         maxAge: 60 * 60 * 24 * 7,
         path: '/',
     });
