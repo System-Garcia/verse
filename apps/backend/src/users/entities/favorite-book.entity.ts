@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, Unique, JoinColumn } from 'typeorm';
 import { User } from './user.entity';
 
 @Entity('favorite_books')
+@Unique(['user_id', 'book_id'])
 export class FavoriteBook {
   @PrimaryGeneratedColumn()
   id: number;
@@ -28,5 +29,6 @@ export class FavoriteBook {
   updated_at: Date;
 
   @ManyToOne(() => User, (user) => user.favoriteBooks)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }
