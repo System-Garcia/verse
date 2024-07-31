@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, Unique, JoinColumn } from 'typeorm';
 import { User } from './user.entity';
 
 @Entity('reading_history')
+@Unique(['user_id', 'book_id'])
 export class ReadingHistory {
   @PrimaryGeneratedColumn()
   id: number;
@@ -28,5 +29,6 @@ export class ReadingHistory {
   updated_at: Date;
 
   @ManyToOne(() => User, (user) => user.readingHistories)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }
