@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, Check, JoinColumn } from 'typeorm';
 import { User } from './user.entity';
 
 @Entity('user_preferences')
+@Check(`"preferences_key" IN ('theme', 'gender', 'author')`)
 export class UserPreference {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,11 +10,11 @@ export class UserPreference {
   @Column()
   user_id: number;
 
-  @Column({ length: 255, nullable: true })
-  genre: string;
+  @Column({ type: 'varchar', length: 20 })
+  preferences_key: string;
 
-  @Column({ length: 255, nullable: true })
-  author: string;
+  @Column({ type: 'varchar', length: 255 })
+  preferences_value: string;
 
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
@@ -22,5 +23,6 @@ export class UserPreference {
   updated_at: Date;
 
   @ManyToOne(() => User, (user) => user.userPreferences)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }
