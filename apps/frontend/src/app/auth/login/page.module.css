@@ -1,0 +1,10 @@
+.login__logo-container {
+    max-width: 20rem;
+    margin: 12rem auto 5.4rem auto;
+}
+
+@media (min-width: 768px) {
+    .login {
+        max-width: 40rem;
+    }
+}
