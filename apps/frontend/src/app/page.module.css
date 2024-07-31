@@ -1,217 +1,214 @@
-.welcome__outerContainer {
+.header{
+  display: none;
+}
+
+.main{
+  display: none;
+}
+
+@media (min-width: 768px) {
+
+}
+
+
+@media (min-width: 1280px) {
+  .container {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: #A259FF;
+    padding: 1rem 2rem;
+    background-color: white;
   }
-  
-  .welcome__innerContainer {
+
+  .header__container {
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-  }
-  
-  .welcome__backcover, .welcome__cover {
-    flex: 1;
-    background-color: #A259FF;
-    color: white;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .welcome__backcover {
-    display: none;
-  }
-  
-  .welcome__spine {
-    width: 100%;
-    background-color: #333;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    cursor: pointer;
+    width: 90%;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+    border-bottom: 1px solid #937DC2;
   }
-  
-  .welcome__logo_spine {
-    display: none;
-  }
-  
-  .welcome__logo_cover {
-    width: 80%;
-    height: auto;
-    margin: 0 auto;
-  }
-  
-  .welcome__coverContent {
+
+  .header__logoContainer {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100%;
+    padding-right: 1rem;
+    border-right: 1px solid #ccc;
+    max-width: 5rem;
   }
-  
-  .welcome__title {
-    margin: 1rem 0;
-    font-size: 3rem;
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
   }
-  
-  .welcome__subtitle {
-    margin: 0 0 2rem;
-    font-size: 2rem;
-  }
-  
-  .welcome__description {
-    margin: 0 0 2rem;
-    font-size: 1.4rem;
-  }
-  
-  .welcome__benefits {
+
+  .header__navList {
     list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .header__navLink {
+    color: #4D4C4C;
+    font-weight: bold;
+  }
+
+  .header__search {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    position: relative;
+  }
+
+  .header__searchInput {
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    background-color: #F1F1F1;
+    width: 300px;
+  }
+
+  .header__searchButton {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .header__searchButton img {
+    margin-left: 0.5rem;
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header__login {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
+  }
+
+  .header__register {
+    padding: 0.5rem 1rem;
+    background-color: #A259FF;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    background: #A259FF;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+  }
+
+  .hero {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    color: #ffffff;
+    width: 100%;
+  }
+
+  .heroContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin-top: 4rem;
     padding: 0;
   }
-  
-  .welcome__benefit {
-    margin-bottom: 1rem;
+
+  .heroContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 100%;
   }
-  
-  .welcome__button {
-    display: block;
+
+  .heroSectionImage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .PureImage {
     width: 100%;
-    padding: 1rem;
-    margin: 1rem auto;
-    border: none;
-    border-radius: 1rem;
-    font-size: 1.6rem;
-    cursor: pointer;
-    text-decoration: none;
+    max-width: 700px;
+  }
+
+  .label {
+    display: inline-block;
+    background: #4B0082;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
     text-align: center;
+    max-width: 12rem;
   }
-  
-  .welcome__button--create {
-    background-color: #fff;
-    color: #9b51e0;
+
+  .title {
+    font-size: 5rem;
+    font-weight: bold;
   }
-  
-  .welcome__button--guest {
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+
+  .description {
+    font-size: 1.8rem;
+    color: #E0E0E0;
+    margin-bottom: 2rem;
   }
-  
-  @media (min-width: 768px) {
-    .welcome__innerContainer {
-      flex-direction: row;
-    }
-  
-    .welcome__backcover {
-      display: flex;
-      flex: 30%;
-      padding: 3rem;
-      font-size: 1.6rem;
-      transition: transform 0.5s ease-in-out;
-    }
-  
-    .welcome__spine {
-      width: 20%;
-      background-color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: width 0.5s ease-in-out;
-    }
-  
-    .welcome__spine:hover ~ .welcome__backcover {
-      transform: translateX(-100%);
-    }
-  
-    .welcome__cover {
-      flex: 50%;
-      padding: 3rem;
-    }
-  
-    .welcome__logo_spine {
-      display: block;
-      width: 80%;
-      height: auto;
-    }
-  
-    .welcome__logo_cover {
-      display: none;
-    }
-  
-    .welcome__title {
-      font-size: 4rem;
-    }
-  
-    .welcome__subtitle {
-      font-size: 2.4rem;
-    }
-  
-    .welcome__description {
-      font-size: 1.8rem;
-    }
-  
-    .welcome__button {
-      font-size: 1.8rem;
-    }
+
+  .exploreButton {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #6A0DAD;
+    background: #ffffff;
+    color: #6A0DAD;
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 18rem;
   }
-  
-  @media (min-width: 1024px) {
-    .welcome__innerContainer {
-      flex-direction: row;
-    }
-  
-    .welcome__backcover {
-      display: flex;
-      flex: 30%;
-      padding: 4rem;
-      font-size: 1.8rem;
-    }
-  
-    .welcome__cover {
-      flex: 50%;
-      padding: 4rem;
-    }
-  
-    .welcome__spine {
-      width: 20%;
-    }
-  
-    .welcome__logo_spine {
-      display: block;
-      width: 80%;
-      height: auto;
-    }
-  
-    .welcome__logo_cover {
-      display: none;
-    }
-  
-    .welcome__title {
-      font-size: 5rem;
-    }
-  
-    .welcome__subtitle {
-      font-size: 3rem;
-    }
-  
-    .welcome__description {
-      font-size: 2rem;
-    }
-  
-    .welcome__button {
-      font-size: 2rem;
-    }
+
+  .Footer{
+    width: 100%;
+    background: #A259FF;
+
   }
-  
-  .spine-clicked .welcome__backcover {
-    transform: translateX(-100%);
+  .JustImage{
+    width: 100%;
   }
+}
