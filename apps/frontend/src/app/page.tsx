@@ -16,12 +16,12 @@ const HomePage = () => {
         <header className={styles['home-header']}>
           <div className={styles['home-header__container']}>
             <div className={styles['home-header__logo-container']}>
-              <Image 
-                src="/images/logo-purple.svg" 
-                alt="Verse Logo" 
-                width={40} 
-                height={40} 
-                className={styles['home-header__logo']} 
+              <Image
+                src="/images/logo-purple.svg"
+                alt="Verse Logo"
+                width={40}
+                height={40}
+                className={styles['home-header__logo']}
                 priority
               />
             </div>
@@ -51,25 +51,25 @@ const HomePage = () => {
             </nav>
             <div className={styles['home-header__actions']}>
               <div className={styles['home-header__search']}>
-                <input 
-                  type="text" 
-                  placeholder="Type any book here" 
-                  className={styles['home-header__search-input']} 
+                <input
+                  type="text"
+                  placeholder="Type any book here"
+                  className={styles['home-header__search-input']}
                   aria-label="Search books"
                 />
                 <button className={styles['home-header__search-button']} aria-label="Search button">
-                  <Image 
-                    src="/images/icons/search-icon.svg" 
-                    alt="Search" 
-                    width={16} 
-                    height={16} 
+                  <Image
+                    src="/images/icons/search-icon.svg"
+                    alt="Search"
+                    width={16}
+                    height={16}
                   />
                 </button>
               </div>
               <Link href="/auth/login" className={styles['home-header__login']} aria-label="Log in page">
                 Log in
               </Link>
-              <Link href="/register" className={styles['home-header__register']} aria-label="Register page">
+              <Link href="/auth/register" className={styles['home-header__register']} aria-label="Register page">
                 Create Account
               </Link>
             </div>
@@ -88,20 +88,20 @@ const HomePage = () => {
                     The Alchemist - Paulo Coelho
                   </h1>
                   <p className={styles['home-hero__description']}>
-                    Paulo Coelho has captivated millions with his works, and "The Alchemist" 
-                    is one of his most notable novels. With over 65 million copies sold and 
-                    translated into 80 languages, this book inspires readers to follow their 
+                    Paulo Coelho has captivated millions with his works, and "The Alchemist"
+                    is one of his most notable novels. With over 65 million copies sold and
+                    translated into 80 languages, this book inspires readers to follow their
                     dreams and find their life's purpose.
                   </p>
-                  <button className={styles['home-hero__explore-button']}>
+                  <Link href="/auth/login" className={styles['home-hero__explore-button']}>
                     Explore this book
-                  </button>
+                  </Link>
                   <Features />
                 </div>
                 <div className={styles['home-hero__image-container']}>
                   <div className={styles['home-hero__image']}>
                     <BookStatisticsSvg />
-                    <InsertBookImages/>
+                    <InsertBookImages />
                   </div>
                 </div>
               </div>
@@ -111,11 +111,11 @@ const HomePage = () => {
 
         <footer className={styles['home-footer']}>
           <div className={styles['home-footer__image-container']}>
-            <Image 
-              src="/images/footer-waves.svg" 
-              alt="Footer Waves" 
-              width={600} 
-              height={400} 
+            <Image
+              src="/images/footer-waves.svg"
+              alt="Footer Waves"
+              width={600}
+              height={400}
               layout="responsive"
             />
           </div>
