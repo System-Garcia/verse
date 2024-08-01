@@ -49,6 +49,11 @@ To get started with this monorepo, follow these steps:
     npm run start:docker
     ```
 
+6. Run seeder:
+    ```bash
+    npm run seed
+    ```
+
 Now you are ready to run the projects.
 
 ## Project Structure

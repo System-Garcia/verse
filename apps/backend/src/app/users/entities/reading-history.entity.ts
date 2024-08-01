@@ -1,8 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, Unique, JoinColumn } from 'typeorm';
 import { User } from './user.entity';
 
-@Entity('favorite_books')
-export class FavoriteBook {
+@Entity('reading_history')
+@Unique(['user_id', 'book_id'])
+export class ReadingHistory {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -18,8 +19,8 @@ export class FavoriteBook {
   @Column({ length: 255 })
   author: string;
 
-  @Column('text', { nullable: true })
-  thumbnail: string;
+  @Column('date')
+  read_date: Date;
 
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
@@ -27,6 +28,7 @@ export class FavoriteBook {
   @UpdateDateColumn({ type: 'timestamp' })
   updated_at: Date;
 
-  @ManyToOne(() => User, (user) => user.favoriteBooks)
+  @ManyToOne(() => User, (user) => user.readingHistories)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }

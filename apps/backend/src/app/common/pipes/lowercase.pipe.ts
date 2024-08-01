@@ -30,7 +30,6 @@ export class LowercasePipe implements PipeTransform {
     // If fields are provided, transform only those fields
     if(metadata.type === 'body') {
       for (const field of this.fieldsToTransform) {
-        console.log('field', field);
         if(value[field] && typeof value[field] === 'string') {
           value[field] = value[field].toLowerCase();
         }
