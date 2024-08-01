@@ -3,8 +3,8 @@ import Link from 'next/link';
 import styles from './page.module.css';
 import MobileView from '../components/HeroSection/MobileView';
 import Features from '../components/FeatureList/FeatureList';
-import InsertBookImages from '../components/SVGs/BookStatisticsSvg/InsertBookImages';
 import BookStatisticsSvg from '../components/SVGs/BookStatisticsSvg/BookStatisticsSvg';
+import SearchAndDisplayBooks from '../components/SearchGoogleBookInput/SearchAndDisplayBooks';
 
 const HomePage = () => {
   return (
@@ -51,20 +51,7 @@ const HomePage = () => {
             </nav>
             <div className={styles['home-header__actions']}>
               <div className={styles['home-header__search']}>
-                <input
-                  type="text"
-                  placeholder="Type any book here"
-                  className={styles['home-header__search-input']}
-                  aria-label="Search books"
-                />
-                <button className={styles['home-header__search-button']} aria-label="Search button">
-                  <Image
-                    src="/images/icons/search-icon.svg"
-                    alt="Search"
-                    width={16}
-                    height={16}
-                  />
-                </button>
+              <SearchAndDisplayBooks />
               </div>
               <Link href="/auth/login" className={styles['home-header__login']} aria-label="Log in page">
                 Log in
@@ -101,7 +88,6 @@ const HomePage = () => {
                 <div className={styles['home-hero__image-container']}>
                   <div className={styles['home-hero__image']}>
                     <BookStatisticsSvg />
-                    <InsertBookImages />
                   </div>
                 </div>
               </div>
@@ -116,7 +102,6 @@ const HomePage = () => {
               alt="Footer Waves"
               width={600}
               height={400}
-              layout="responsive"
             />
           </div>
         </footer>

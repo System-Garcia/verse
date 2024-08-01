@@ -76,24 +76,6 @@
     position: relative;
   }
 
-  .home-header__search-input {
-    padding: 0.5rem 1rem;
-    border-radius: 2px;
-    border: 1px solid #ffffff;
-    background-color: #F1F1F1;
-    width: 300px;
-  }
-
-  .home-header__search-button {
-    position: absolute;
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-
   .home-header__actions {
     display: flex;
     align-items: center;

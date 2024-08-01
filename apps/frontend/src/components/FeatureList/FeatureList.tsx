@@ -5,7 +5,7 @@ const FeatureItem = ({ icon, title, description }: { icon: string; title: string
   return (
     <div className={styles.feature}>
       <div className={styles.featureIcon}>
-        <Image src={icon} alt={`${title} icon`} width={48} height={48} />
+        <Image src={icon} alt={`${title} icon`} width={0} height={0} />
       </div>
       <div className={styles.featureText}>
         <h3>{title}</h3>
