@@ -1,0 +1,81 @@
+.mobile-view {
+    background-color: #A259FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+  }
+  
+  .mobile-view__logo {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 2rem;
+  }
+  
+  .mobile-view__title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-view__subtitle {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 3rem;
+  }
+  
+  .mobile-view__button {
+    background-color: white;
+    color: #A259FF;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .mobile-view__button--outline {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  @media (min-width: 768px) {
+    .mobile-view {
+      padding: 2rem;
+    }
+  
+    .mobile-view__logo {
+      max-width: 250px;
+    }
+  
+    .mobile-view__title {
+      font-size: 4.5rem;
+    }
+  
+    .mobile-view__subtitle {
+      font-size: 2.2rem;
+    }
+  
+    .mobile-view__button,
+    .mobile-view__button--outline {
+      padding: 1.8rem;
+      font-size: 2rem;
+    }
+  }

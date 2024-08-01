@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #A259FF;
+  --secondary-color: #FFD700;
+  --font-size-large: 1.8rem;
+  --font-size-xlarge: 2.2rem;
+}
+
 html,body {
   font-size: 62.5%;
   box-sizing: border-box;
