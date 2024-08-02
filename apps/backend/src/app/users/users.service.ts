@@ -20,6 +20,7 @@ import { Role } from '../roles/entities/role.entity';
 import { FindUserOptions } from './interfaces/find-user-options.interface';
 import { CreateFavoriteBookDto } from './dto/create-favorite-book.dto';
 import { PaginatedFavoriteBooksResponseDto } from './dto/paginated-favorite-books-res.dto';
+import { CreateReadingHistoryDto } from './dto/create-reading-history.dto';
 
 @Injectable()
 export class UsersService {
@@ -172,15 +173,15 @@ export class UsersService {
 
     const skippedItems = (page - 1) * limit;
     const totalCount = await this.favoriteBookRepository.count({
-      where: { id: userId },
+      where: { user_id: userId },
     });
     
     const nextPage =
       page * limit < totalCount
-        ? this.baseUrl + `?page=${page + 1}&limit=${limit}`
+        ? this.baseUrl + `/users/${userId}/favorite-books?page=${page + 1}&limit=${limit}`
         : null;
     const previousPage =
-      page > 1 ? this.baseUrl + `?page=${page - 1}&limit=${limit}` : null;
+      page > 1 ? this.baseUrl + `/users/${userId}/favorite-books?page=${page - 1}&limit=${limit}` : null;
 
     if (totalCount < skippedItems) {
       return {
@@ -244,5 +245,86 @@ export class UsersService {
     }
 
     await this.favoriteBookRepository.delete(favoriteBook.id);
+  }
+
+  // Reading History Methods
+  async getReadingHistory(userId: number, paginationDto: PaginationDto) {
+    const { page = 1, limit = 10 } = paginationDto;
+
+    const skippedItems = (page - 1) * limit;
+    const totalCount = await this.readingHistoryRepository.count({
+      where: { user_id: userId },
+    });
+
+    const nextPage =
+      page * limit < totalCount
+        ? this.baseUrl + `/users/${userId}/reading-history?page=${page + 1}&limit=${limit}`
+        : null;
+    const previousPage =
+      page > 1 ? this.baseUrl + `/users/${userId}/reading-history?page=${page - 1}&limit=${limit}` : null;
+      
+    if (totalCount < skippedItems) {
+      return {
+        total: totalCount,
+        page,
+        limit,
+        next: nextPage,
+        prev: previousPage,
+        readingHistory: [],
+      };
+    }
+
+    const readingHistory = await this.readingHistoryRepository.find({
+      where: { user_id: userId },
+      skip: skippedItems,
+      take: limit,
+    });
+
+    return {
+      total: totalCount,
+      page,
+      limit,
+      next: nextPage,
+      prev: previousPage,
+      readingHistory,
+    };
+  }
+
+  async addReadingHistory(userId, createReadingHistoryDto: CreateReadingHistoryDto): Promise<ReadingHistory> {
+    const user = await this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const existingReadingHistory = await this.readingHistoryRepository.findOne({
+      where: {user_id: userId, book_id: createReadingHistoryDto.bookId},
+    });
+
+    if (existingReadingHistory) {
+      throw new ConflictException('Book already exists in reading history');
+    }
+
+    const readingHistory = this.readingHistoryRepository.create({
+      ...createReadingHistoryDto,
+      user_id: userId,
+      book_id: createReadingHistoryDto.bookId,
+      read_date: createReadingHistoryDto.readDate,
+    });
+
+    const savedReadingHistory = await this.readingHistoryRepository.save(readingHistory);
+
+    return savedReadingHistory;
+  }
+
+  async removeReadingHistory(userId: number, bookId: string): Promise<void> {
+    const readingHistory = await this.readingHistoryRepository.findOne({
+      where: { user_id: userId, book_id: bookId },
+    });
+
+    if (!readingHistory) {
+      throw new NotFoundException('Reading history not found');
+    }
+
+    await this.readingHistoryRepository.delete(readingHistory.id);
   }
 }
