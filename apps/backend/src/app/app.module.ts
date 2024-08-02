@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { RolesModule } from './roles/roles.module';
+import { AiAnalysisModule } from './aianalysis/ai-analysis.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { RolesModule } from './roles/roles.module';
     AuthModule,
     UsersModule,
     RolesModule,
+    AiAnalysisModule,
   ],
   controllers: [AppController],
   providers: [AppService],
