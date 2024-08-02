@@ -22,6 +22,26 @@
   -moz-appearance: none;
   appearance: none;
   padding-right: 2.5rem;
+  cursor: pointer;
+  color: #000;
+}
+
+.search-select option {
+  background-color: #fff;
+  color: #000;
+  font-size: 14px;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+}
+
+.search-select:focus, .search-select:hover {
+  border-color: #A259FF;
+  outline: none;
+}
+
+.search-select option:checked {
+  background-color: #A259FF;
+  color: #fff;
 }
 
 .triangle-container::after {

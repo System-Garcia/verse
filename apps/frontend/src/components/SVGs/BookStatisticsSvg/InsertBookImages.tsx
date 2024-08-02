@@ -2,56 +2,42 @@
 import React, { useEffect } from 'react';
 
 interface BookImage {
-  id: string;  // Origin: Image property; unique identifier for the book.
-  x: number;  // Origin: SVG positioning; X coordinate where the book image will be placed.
-  y: number;  // Origin: SVG positioning; Y coordinate where the book image will be placed.
+  id: string;  // Unique identifier for the book image.
+  x: number;  // X coordinate for placing the image in the SVG.
+  y: number;  // Y coordinate for placing the image in the SVG.
   width: number;
   height: number;
-  href: string;  // Origin: URL or local path; source of the book image.
+  href: string;  // Source URL or path for the book image.
 }
 
 interface Props {
-  books: BookImage[];  // Origin: List of BookImage objects; the book images to render.
+  books: BookImage[];  // Array of BookImage objects to render in the SVG.
 }
 
-// Origin: React functional component; defines the InsertBookImages component.
-// Functionality: Inserts book images into an SVG based on provided coordinates and dimensions.
-// Purpose: To display book covers in an SVG format within the application.
+// Inserts book images into an SVG element, updating the display based on the provided book data.
 const InsertBookImages: React.FC<Props> = ({ books = [] }) => {
-  // Origin: React Hook; useEffect is used to execute code when the component mounts or when dependencies change.
-  // Functionality: Manages the insertion of image elements into an SVG and updates them when the book data changes.
-  // Purpose: Ensures that the SVG images are updated based on the latest book data.
   useEffect(() => {
-    // Origin: DOM manipulation; selects an SVG element in the document.
-    const svg = document.querySelector('svg');
+    const svg = document.querySelector('svg');  // Selects the SVG element in the document.
     
-    // Functionality: Checks if the SVG exists before proceeding.
     if (svg) {
-      // Functionality: Removes all previous images to avoid duplication.
-      svg.querySelectorAll('image.book-image').forEach(img => img.remove());
+      svg.querySelectorAll('image.book-image').forEach(img => img.remove());  // Removes any existing book images.
 
-      // Functionality: Iterates over each book provided in the props.
       books.forEach(book => {
-        if (book) {  // Functionality: Ensures the book object is not null or undefined.
-          // Origin: SVG API; creates a new image element within the SVG.
-          const imgElement = document.createElementNS("http://www.w3.org/2000/svg", "image");
-          // Functionality: Sets the X and Y coordinates, width, and height of the image element.
-          imgElement.setAttributeNS(null, "x", book.x.toString());
-          imgElement.setAttributeNS(null, "y", book.y.toString());
-          imgElement.setAttributeNS(null, "width", book.width.toString());
-          imgElement.setAttributeNS(null, "height", book.height.toString());
-          // Functionality: Sets the URL or path of the image as the source of the element.
-          imgElement.setAttributeNS("http://www.w3.org/1999/xlink", "href", book.href);
-          // Purpose: Adds a class to identify the added image elements.
-          imgElement.classList.add('book-image');
-          // Functionality: Appends the image element to the SVG.
-          svg.appendChild(imgElement);
+        if (book) {
+          const imgElement = document.createElementNS("http://www.w3.org/2000/svg", "image");  // Creates a new SVG image element.
+          imgElement.setAttributeNS(null, "x", book.x.toString());  // Sets X coordinate.
+          imgElement.setAttributeNS(null, "y", book.y.toString());  // Sets Y coordinate.
+          imgElement.setAttributeNS(null, "width", book.width.toString());  // Sets width.
+          imgElement.setAttributeNS(null, "height", book.height.toString());  // Sets height.
+          imgElement.setAttributeNS("http://www.w3.org/1999/xlink", "href", book.href);  // Sets image source.
+          imgElement.classList.add('book-image');  // Adds a class to the image element.
+          svg.appendChild(imgElement);  // Appends the image to the SVG.
         }
       });
     }
-  }, [books]);  // Origin: Effect dependencies; re-runs the effect whenever the book data changes.
+  }, [books]);  // Re-runs effect whenever the books data changes.
 
-  return null;  // Purpose: This component does not render anything visible, it only manipulates the SVG.
+  return null;  // Component returns null as it directly manipulates the DOM.
 };
 
 export default InsertBookImages;
