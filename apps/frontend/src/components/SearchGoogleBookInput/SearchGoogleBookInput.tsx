@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import styles from './SearchGoogleBookInput.module.css';
+import styles from './searchGooglebookInput.module.css';
 
 interface Props {
   onSearch: (bookCovers: string[]) => void; // Passes the array of book cover URLs to the parent component for updating the display.

@@ -1,9 +1,6 @@
-import React from 'react';
-import styles from './BookStatisticsSvg.module.css';
-
 const BookStatisticsSvg: React.FC = () => {
     return (
-        <svg className={styles.responsiveSvg}
+        <svg
             width="709" height="602" viewBox="0 0 709 602" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="book-statistics">
                 <g id="Group 1321316021">

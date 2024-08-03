@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import InsertBookImages from '../SVGs/BookStatisticsSvg/InsertBookImages';
 import SearchGoogleBookInput from './SearchGoogleBookInput';
-import styles from './SearchAndDisplayBooks.module.css';
+import styles from './searchAndDisplaybooks.module.css';
 
 interface BookImage {
   id: string;  // Unique identifier for each book image

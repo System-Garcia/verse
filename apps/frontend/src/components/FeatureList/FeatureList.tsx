@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from './FeatureList.module.css';
+import styles from './featureList.module.css';
 
 const FeatureItem = ({ icon, title, description }: { icon: string; title: string; description: string }) => {
   return (
