@@ -29,7 +29,7 @@ const SearchGoogleBookInput: React.FC<Props> = ({ onSearch }) => {
     }
 
     // Include the API key in the request URL
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=12&key=${process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY}`);
+    const response = await fetch(`/api/books/searchbooks?q=${searchTerm}&category=${searchCategory}`);
     const data = await response.json();
 
     if (!data.items || data.items.length === 0) {
