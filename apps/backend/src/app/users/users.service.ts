@@ -21,6 +21,8 @@ import { FindUserOptions } from './interfaces/find-user-options.interface';
 import { CreateFavoriteBookDto } from './dto/create-favorite-book.dto';
 import { PaginatedFavoriteBooksResponseDto } from './dto/paginated-favorite-books-res.dto';
 import { CreateReadingHistoryDto } from './dto/create-reading-history.dto';
+import { PaginatedUserPreferenceResDto } from './dto/paginated-user-preference-res.dto';
+import { CreateUserPreferencesDto } from './dto/create-user-preferences.dto';
 
 @Injectable()
 export class UsersService {
@@ -326,5 +328,103 @@ export class UsersService {
     }
 
     await this.readingHistoryRepository.delete(readingHistory.id);
+  }
+
+  // User Preferences Methods
+  async getPreferences(userId: number, paginationDto: PaginationDto): Promise<PaginatedUserPreferenceResDto> {
+
+    const user = await this.findOne(userId, { includePreferences: true });
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const { page = 1, limit = 10 } = paginationDto;
+
+    const skippedItems = (page - 1) * limit;
+    const totalCount = await this.userPreferenceRepository.count({
+      where: { user_id: userId },
+    });
+
+    const nextPage =
+      page * limit < totalCount
+        ? this.baseUrl + `/users/${userId}/preferences?page=${page + 1}&limit=${limit}`
+        : null;
+    const previousPage =
+      page > 1 ? this.baseUrl + `/users/${userId}/preferences?page=${page - 1}&limit=${limit}` : null;
+
+    if (totalCount < skippedItems) {
+      return {
+        total: totalCount,
+        page,
+        limit,
+        next: nextPage,
+        prev: previousPage,
+        preferences: [],
+      };
+    }
+
+    return {
+      total: totalCount,
+      page,
+      limit,
+      next: nextPage,
+      prev: previousPage,
+      preferences: user.userPreferences,
+    }
+  }
+
+  async setPreferences(userId, createUserPreferenceDto: CreateUserPreferencesDto) {
+    const { preferences } = createUserPreferenceDto;
+
+    const user = await this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    for (const preference of preferences) {
+
+      const { preferencesKey, preferencesValue } = preference;
+
+      const existingPreference = await this.userPreferenceRepository.findOne({
+        where: { user_id: userId, preferences_key: preferencesKey, preferences_value: preferencesValue },
+      });
+  
+      if (existingPreference) {
+        throw new ConflictException(`Preference with key ${ preferencesKey } and value ${preferencesValue} already exists`);
+      }
+    };
+
+    const userPreferences = preferences.map(preference => ({
+      user_id: userId,
+      preferences_key: preference.preferencesKey,
+      preferences_value: preference.preferencesValue,
+    }));
+
+    const savedUserPreferences = await this.userPreferenceRepository.save(userPreferences);
+
+    const userPreference = this.userPreferenceRepository.create(savedUserPreferences);
+
+    return userPreference;
+  }
+
+  async removePreference(userId: number, preferencesId: number) {
+    const userPreference = await this.userPreferenceRepository.findOne({
+      where: { user_id: userId, id: preferencesId },
+    });
+
+    if (!userPreference) {
+      throw new NotFoundException('Preference not found');
+    };
+
+    await this.userPreferenceRepository.delete(userPreference.id);
+  }
+
+  async resetPreferences(userId: number) {
+    const user = await this.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    await this.userPreferenceRepository.delete({ user_id: userId });
   }
 }
