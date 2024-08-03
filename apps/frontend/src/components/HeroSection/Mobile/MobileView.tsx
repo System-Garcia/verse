@@ -4,16 +4,12 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './mobileView.module.css';
-import useResponsive from '../../../hooks/useResponsive';
 
 const SearchAndDisplayBooks = dynamic(() => import('../../SearchGoogleBookInput/SearchAndDisplayBooks'));
 const BookStatisticsSvg = dynamic(() => import('../../SVGs/BookStatisticsSvg/BookStatisticsSvg'));
 
 const MobileView = () => {
-  const isMobile = useResponsive();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  if (!isMobile) return null;
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -77,11 +73,11 @@ const MobileView = () => {
               className={styles['hero__logo']}
             />
             <button onClick={toggleMenu} className={styles['hero__menu-button']}>
-            <div className={styles.navbar__hamburger} onClick={toggleMenu}>
-              <div className={`${styles.navbar__bar} ${menuOpen ? styles['navbar__bar--active1'] : ''}`}></div>
-              <div className={`${styles.navbar__bar} ${menuOpen ? styles['navbar__bar--active2'] : ''}`}></div>
-              <div className={`${styles.navbar__bar} ${menuOpen ? styles['navbar__bar--active3'] : ''}`}></div>
-            </div>
+              <div className={styles.navbar__hamburger} onClick={toggleMenu}>
+                <div className={`${styles.navbar__bar} ${menuOpen ? styles['navbar__bar--active1'] : ''}`}></div>
+                <div className={`${styles.navbar__bar} ${menuOpen ? styles['navbar__bar--active2'] : ''}`}></div>
+                <div className={`${styles.navbar__bar} ${menuOpen ? styles['navbar__bar--active3'] : ''}`}></div>
+              </div>
             </button>
           </div>
           <h1 className={styles['hero__title']}>Welcome<br />to<br />Verse</h1>
