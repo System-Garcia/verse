@@ -19,6 +19,9 @@ export class ReadingHistory {
   @Column({ length: 255 })
   author: string;
 
+  @Column('text', { nullable: true })
+  thumbnail: string;
+
   @Column('date')
   read_date: Date;
 
