@@ -1,6 +1,14 @@
-html {
+:root {
+  --primary-color: #A259FF;
+  --secondary-color: #FFD700;
+  --font-size-large: 1.8rem;
+  --font-size-xlarge: 2.2rem;
+}
+
+html,body {
   font-size: 62.5%;
   box-sizing: border-box;
+  margin: 0;
   min-height: 100%;
   scroll-behavior: smooth;
 }
@@ -26,6 +34,11 @@ img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
 }
 
 ul {
