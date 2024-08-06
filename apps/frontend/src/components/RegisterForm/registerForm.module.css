@@ -1,0 +1,18 @@
+.register-form {
+    margin-top: 5rem;
+}
+
+
+.register-form__input-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-bottom: 2.4rem;
+}
+
+.register-form__password-icon {
+    position: absolute;
+    right: 1.6rem;
+    max-width: 1.9rem;
+    cursor: pointer;
+}
