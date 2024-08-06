@@ -1,5 +1,8 @@
 .register-form {
+    display: flex;
+    flex-direction: column;
     margin-top: 5rem;
+    gap: 2.5rem;
 }
 
 
@@ -7,7 +10,23 @@
     display: flex;
     position: relative;
     align-items: center;
-    margin-bottom: 2.4rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.register-form__icon {
+    position: absolute;
+    right: 1.6rem;
+    max-width: 1.9rem;
+    cursor: pointer;
+}
+
+.register-form__error-message {
+    color: #FF3B30;
+    font-size: 1.3rem;
+    margin-top: 0.8rem;
+    position: absolute;
+    bottom: -2.3rem;
 }
 
 .register-form__password-icon {
@@ -15,4 +34,44 @@
     right: 1.6rem;
     max-width: 1.9rem;
     cursor: pointer;
+}
+
+.register-form__button {
+    background: #A259FF;
+    height: 5rem;
+    border: none;
+    border-radius: 1rem;
+    color: #FFF;
+    font-size: 1.8rem;
+    margin-top: 5.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.register-form__button:hover {
+    background: #8B4DE8;
+}
+
+.register-form__button:active {
+    background: #6C2BD9;
+}
+
+.register-form__button:disabled {
+    background: #D1D1D6;
+}
+
+.register-form__button:disabled:hover {
+    background: #D1D1D6;
+}
+
+.register-form__login {
+    text-align: center;
+    margin-top: 2.7rem;
+    font-size: 1.4rem;
+    color: #8E8E93;
+}
+
+.register-form__login-link {
+    font-weight: 700;
+    color: #8E8E93;
 }

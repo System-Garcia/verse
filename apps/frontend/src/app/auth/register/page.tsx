@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 import RegisterForm from 'apps/frontend/src/components/RegisterForm/RegisterForm';
+import { register } from './action';
 
 export default function RegisterPage() {
+
   return (
     <div className={`${styles['register']} container`}>
       <div className={styles['register__logo']}>
@@ -15,7 +17,7 @@ export default function RegisterPage() {
         />
       </div>
 
-      <RegisterForm />
+      <RegisterForm onSubmit={register}/>
     </div>
   );
 }
